@@ -3,8 +3,8 @@
 # test test test
 # CS415 Project01
 
+import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib as plt
 
 
 def fib(k):
@@ -46,6 +46,12 @@ def decreasebyone(a, n):
     return decreasebyone(a, n - 1) * a
 
 
+def decreasebyoneplot(a, n):
+    if n == 0:
+        return 1
+    return decreasebyone(a, n - 1) + 1
+
+
 def divideandconquer(a, n):
     if n == 0:
         return 1
@@ -54,6 +60,7 @@ def divideandconquer(a, n):
     else:
         return (divideandconquer(a, (n-1)/2) * divideandconquer(a, (n-1)/2)) * a
 
+
 def selectionsort(array):
     for i in range(len(array)):
         minidx = i
@@ -61,6 +68,16 @@ def selectionsort(array):
             if array[minidx] > array[j]:
                 minidx = j
         array[i], array[minidx] = array[minidx], array[i]
+
+
+def insertionsort(array):
+    for i in range(1, len(array)):
+        ind = array[i]
+        j = i - 1
+        while j >= 0 and ind < array[j]:
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = ind
 
 
 def main():
@@ -80,6 +97,8 @@ def main():
         print("\nTask 2:")
         print("Enter integer value for a and n:  \n > ", end='')
         array = list(map(int, input().split()))
+        if len(array) <= 1:
+            exit()
         a, n = array[0], array[1]
         print("Decrease by One method:", decreasebyone(a, n))
         print("Decrease by a Constant Method: ", decreasebyconstant(a, n))
@@ -87,17 +106,44 @@ def main():
 
         print("_______________________________")
         print("\nTask 3:")
-        print("Enter a list of integers to be sorted:  \n > ", end='')
-        array = list(map(int, input().split()))
-        selectionsort(array)
-        for ele in array:
-            print(ele, sep=',', end='')
-
+        n = int(input("Enter a size of a list:  \n > "))
+        #print("Enter a list of integers to be sorted:  \n > ", end='')
+        #array = list(map(int, input().split()))
+        sortarray = []
+        print("Enter elements in list on its own line")
+        for ele in range(n):
+            sortarray.append(input())
+        selectarray = list.copy(sortarray)
+        insertionarray = list.copy(sortarray)
+        selectionsort(selectarray)
+        insertionsort(insertionarray)
+        print("Orginal")
+        for ele in sortarray:
+            print(ele, end=' ')
+        print("\nSelection Sort")
+        for ele in selectarray:
+            print(ele, end=' ')
+        print("\nInsertion Sort")
+        for ele in insertionarray:
+            print(ele, end=' ')
 
     if mode == 1:
         print("Scatter plot mode selected")
         for i in range(1, 11):
             print(gcd(fib(i + 1), fib(i)))
+
+        print("_______________________________")
+        print("\nTask 2:")
+        print("Decrease by One")
+        x, y = [], []
+        for i in range(1, 5):
+            x.append(decreasebyoneplot(2, i))
+            y.append(i)
+        plt.scatter(x, y, color='k')
+        plt.scatter()
+        plt.title("Task 2 Graph")
+        plt.show()
+
 
 
 main()
