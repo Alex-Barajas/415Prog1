@@ -28,9 +28,20 @@ def fib2(k):
     return f
 
 
+def gcd(m, n):
+
+    if (m == 0):
+        return n
+    return gcd(n % m, m)
+
+
+
+
 def main():
-    print(fib(int(input("Compute the kth fib number: "))))
-    print(fib2(int(input("Compute the number of additions A(k): "))))
+    #print(fib(int(input("Compute the kth fib number: "))))
+    #print(fib2(int(input("Compute the number of additions A(k): "))))
+    for i in range(1,11):
+        print(gcd(fib(i+1),fib(i))) #n=
 
 
 main()

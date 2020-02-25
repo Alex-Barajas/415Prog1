@@ -1,0 +1,11 @@
+check your branch (work on yours)
+
+git status
+
+when you want to add work to GitHub
+
+git add .
+git commit -m "say something"
+git push origin branchname
+
+we can then merge the stuff on GitHub.com
