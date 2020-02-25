@@ -63,6 +63,8 @@ def divideandconquer(a, n):
     else:
         return (divideandconquer(a, (n-1)/2) * divideandconquer(a, (n-1)/2)) * a
 
+def divideandconquerplot(a, n):
+    return 2
 
 def selectionsort(array):
     for i in range(len(array)):
@@ -138,14 +140,16 @@ def main():
         print("_______________________________")
         print("\nTask 2:")
         print("Decrease by One")
-        x, y, w = [], [], []
+        x, y, w, v = [], [], [], []
         for i in range(1, 5):
             x.append(decreasebyoneplot(2, i))
             w.append(decreasebyconstantplot(2, i))
+            v.append(divideandconquerplot(2, i))
             y.append(i)
         #plt.scatter(x, y, color='k')
         plt.scatter(x, y, c='b', marker='x', label='Decrease by One')
         plt.scatter(w, y, c='r', marker='s', label='Decrease by Constant')
+        plt.scatter(v, y, c='g', marker='s', label='Divide and Conquer')
         plt.legend(loc='upper left')
         plt.title("Task 2 Graph")
         plt.show()
