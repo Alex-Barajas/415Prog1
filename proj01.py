@@ -7,24 +7,21 @@ import math
 
 
 
-#task 1
+def fib(k):
 
-def fib (k):
     # compute the kth fibonacci number
-      if (k <= 1):
-         return k
-      else:
-         return fib(k-1) + fib(k-2)
-
-
+    if (k <= 1):
+        return k
+    else:
+        return fib(k - 1) + fib(k - 2)
 
 
 def fib2(k):
     # calculate corresponding number of additions
-    if (k == 0 or k == 1):
-        f=0
+    if (k == 0) or (k == 1):
+        f = 0
     else:
-        f = fib2(k-1) + fib2(k-2) + 1
+        f = fib2(k - 1) + fib2(k - 2) + 1
     return f
 
 
@@ -45,7 +42,3 @@ def main():
 
 
 main()
-
-
-
-# task 2
