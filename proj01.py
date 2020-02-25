@@ -1,11 +1,14 @@
 # Alex Barajas-Ritchie
 # Alondra Lona
+# test test test
 # CS415 Project01
 
 import math
 
 
+
 def fib(k):
+
     # compute the kth fibonacci number
     if (k <= 1):
         return k
@@ -22,11 +25,20 @@ def fib2(k):
     return f
 
 
+def gcd(m, n):
+
+    if (m == 0):
+        return n
+    return gcd(n % m, m)
+
+
+
+
 def main():
-    print(fib(int(input("Compute the kth fib number: "))))
-    print(fib2(int(input("Compute the number of additions A(k): "))))
+    #print(fib(int(input("Compute the kth fib number: "))))
+    #print(fib2(int(input("Compute the number of additions A(k): "))))
+    for i in range(1,11):
+        print(gcd(fib(i+1),fib(i))) #n=
 
 
 main()
-
-# print(fib2(int(input("Compute the number of additions A(k): "))))
