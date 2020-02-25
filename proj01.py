@@ -39,6 +39,9 @@ def decreasebyconstant(a, n):
         return (decreasebyconstant(a, ((n-1)/2)) * decreasebyconstant(a, (n-1)/2)) * a
 
 
+def decreasebyconstantplot(a, n):
+    return 1
+
 
 def decreasebyone(a, n):
     if n == 0:
@@ -135,14 +138,20 @@ def main():
         print("_______________________________")
         print("\nTask 2:")
         print("Decrease by One")
-        x, y = [], []
+        x, y, w = [], [], []
         for i in range(1, 5):
             x.append(decreasebyoneplot(2, i))
+            w.append(decreasebyconstantplot(2, i))
             y.append(i)
-        plt.scatter(x, y, color='k')
-        plt.scatter()
+        #plt.scatter(x, y, color='k')
+        plt.scatter(x, y, c='b', marker='x', label='Decrease by One')
+        plt.scatter(w, y, c='r', marker='s', label='Decrease by Constant')
+        plt.legend(loc='upper left')
         plt.title("Task 2 Graph")
         plt.show()
+
+
+
 
 
 
