@@ -71,9 +71,9 @@ def divideandconquer(a, n):
 
 def divideandconquerplot(a, n):
     if n == 0:
-        return 0
+        return 1
     if n % 2 == 0:
-        return divideandconquerplot(a, n / 2) + divideandconquerplot(a, n / 2) + 1
+        #return divideandconquerplot(a, n / 2) + divideandconquerplot(a, n / 2) + 1
         return 2 * (divideandconquerplot(a, n // 2)) + 1
     else:
         return 2 * (divideandconquerplot(a, n//2)) + 2
@@ -153,19 +153,19 @@ def main():
         print("_______________________________")
         print("\nTask 2:")
         x, n, w, v = [], [], [], []
-        for i in range(1, 51):
-            x.append(decreasebyoneplot(2, i))
-            w.append(decreasebyconstantplot(2, i))
-            v.append(divideandconquerplot(2, i))
+        for i in range(1, 100):
+            x.append(decreasebyoneplot(5, i))
+            w.append(decreasebyconstantplot(5, i))
+            v.append(divideandconquerplot(5, i))
             n.append(i)
         #plt.scatter(x, y, color='k')
-        plt.xlim(0, 50)
-        plt.ylim(0, 50)
+        plt.xlim(0, 45)
+        plt.ylim(0, 45)
         plt.scatter(n, x, c='b', marker='x', label='Decrease by One')
         plt.scatter(n, w, c='r', marker='s', label='Decrease by Constant')
         plt.scatter(n, v, c='g', marker='o', label='Divide and Conquer')
-        plt.legend(loc='upper left')
-        plt.title("Task 2 Graph")
+        plt.legend(loc='upper right')
+        plt.title("Task 2 Graph: Worst Case Exponentiation")
         plt.show()
 
 
