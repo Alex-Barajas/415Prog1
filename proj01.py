@@ -34,25 +34,30 @@ def decreasebyconstant(a, n):
     if n == 0:
         return 1
     if n % 2 == 0:
-        return decreasebyconstant(a, n/2) * decreasebyconstant(a, n/2)
+        return (decreasebyconstant(a, n/2))**2
     else:
-        return (decreasebyconstant(a, ((n-1)/2)) * decreasebyconstant(a, (n-1)/2)) * a
+        return (decreasebyconstant(a, (n//2)) ** 2) * a
 
 
 def decreasebyconstantplot(a, n):
-    return 1
+    if n == 0:
+        return 0
+    if n % 2 == 0:
+        return decreasebyconstantplot(a, n/2) + 1
+    return decreasebyconstantplot(a, (n // 2)) + 2
 
 
 def decreasebyone(a, n):
     if n == 0:
         return 1
-    return decreasebyone(a, n - 1) * a
+    if n > 0:
+        return a * (decreasebyone(a, n - 1))
 
 
 def decreasebyoneplot(a, n):
     if n == 0:
         return 1
-    return decreasebyone(a, n - 1) + 1
+    return decreasebyoneplot(a, n - n) + n
 
 
 def divideandconquer(a, n):
@@ -61,10 +66,18 @@ def divideandconquer(a, n):
     if n % 2 == 0:
         return divideandconquer(a, n/2) * divideandconquer(a, n/2)
     else:
-        return (divideandconquer(a, (n-1)/2) * divideandconquer(a, (n-1)/2)) * a
+        return (divideandconquer(a, (n // 2)) * (divideandconquer(a, (n // 2)))) * a
+
 
 def divideandconquerplot(a, n):
-    return 2
+    if n == 0:
+        return 0
+    if n % 2 == 0:
+        return divideandconquerplot(a, n / 2) + divideandconquerplot(a, n / 2) + 1
+        return 2 * (divideandconquerplot(a, n // 2)) + 1
+    else:
+        return 2 * (divideandconquerplot(a, n//2)) + 2
+    #return (divideandconquerplot(a, n // 2)) + divideandconquerplot(a, n) + 1
 
 def selectionsort(array):
     for i in range(len(array)):
@@ -134,22 +147,23 @@ def main():
 
     if mode == 1:
         print("Scatter plot mode selected")
-        for i in range(1, 11):
-            print(gcd(fib(i + 1), fib(i)))
+        # for i in range(1, 5):
+        #     print(gcd(fib(i + 1), fib(i)))
 
         print("_______________________________")
         print("\nTask 2:")
-        print("Decrease by One")
-        x, y, w, v = [], [], [], []
-        for i in range(1, 5):
+        x, n, w, v = [], [], [], []
+        for i in range(1, 51):
             x.append(decreasebyoneplot(2, i))
             w.append(decreasebyconstantplot(2, i))
             v.append(divideandconquerplot(2, i))
-            y.append(i)
+            n.append(i)
         #plt.scatter(x, y, color='k')
-        plt.scatter(x, y, c='b', marker='x', label='Decrease by One')
-        plt.scatter(w, y, c='r', marker='s', label='Decrease by Constant')
-        plt.scatter(v, y, c='g', marker='s', label='Divide and Conquer')
+        plt.xlim(0, 50)
+        plt.ylim(0, 50)
+        plt.scatter(n, x, c='b', marker='x', label='Decrease by One')
+        plt.scatter(n, w, c='r', marker='s', label='Decrease by Constant')
+        plt.scatter(n, v, c='g', marker='o', label='Divide and Conquer')
         plt.legend(loc='upper left')
         plt.title("Task 2 Graph")
         plt.show()
