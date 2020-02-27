@@ -27,7 +27,7 @@ def fib2(k):
 def gcd(m, n):
     if m == 0:
         return n
-    return gcd(n % m, m)
+    return gcd(n, m % n)
 
 
 def decreasebyconstant(a, n):
@@ -97,8 +97,20 @@ def insertionsort(array):
             j -= 1
         array[j + 1] = ind
 
+def insertionsortplot(array):
+    count = 0
+    for i in range(1, len(array)):
+        ind = array[i]
+        j = i - 1
+        while j >= 0 and ind < array[j]:
+            count += 1
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = ind
+    return count
 
 def main():
+
     print("_______________________________")
     mode = int(input("Mode selection: \n \t Enter 0 for User Testing Mode --or--  1 Scatter Plot Mode: \n > "))
     if mode == 0:
@@ -111,9 +123,10 @@ def main():
         k = int(input("\tEnter integer value for K:  \n > "))
         print("Fib: ", fib(k))
         print("GCD: ", gcd(k+1, k))
+
         print("_______________________________")
         print("\nTask 2:")
-        print("Enter integer value for a and n:  \n > ", end='')
+        print("Enter integer value for a and n ( same line ):  \n > ", end='')
         array = list(map(int, input().split()))
         if len(array) <= 1:
             exit()
@@ -135,7 +148,7 @@ def main():
         insertionarray = list.copy(sortarray)
         selectionsort(selectarray)
         insertionsort(insertionarray)
-        print("Orginal")
+        print("Original")
         for ele in sortarray:
             print(ele, end=' ')
         print("\nSelection Sort")
@@ -166,6 +179,30 @@ def main():
         plt.scatter(n, v, c='g', marker='o', label='Divide and Conquer')
         plt.legend(loc='upper right')
         plt.title("Task 2 Graph: Worst Case Exponentiation")
+        plt.show()
+
+
+
+        print ("\nTask 3:")
+        #Task 3: For different sizes of the list (n), generate test data that is sorted,
+        # random and reverse sorted. Use the same input data to
+        # compute C(n) for each of the two sorting algorithms.
+        # Produce three scatter plots that compare the complexity
+        # of the two algorithms in
+        # i) Best-case,
+        # ii) Average-case, and
+        # iii) Worst-case.
+        x, n, w, v = [], [], [], []
+        #for i in range (1, 100):
+            #x.append(insertionsortplot(5))
+           # n.append(i)
+        
+        plt.xlim(0, 45)
+        plt.ylim(0, 45)
+        plt.scatter(n, x, c='b', marker='x', label='Insertion Sort')
+        plt.scatter(n, w, c='r', marker='s', label='Selection Sort ')
+        plt.legend(loc='upper right')
+        plt.title("Task 3 Graph: Best Case")
         plt.show()
 
 
