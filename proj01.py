@@ -202,16 +202,22 @@ def main():
             n.append(i)
             g.append(gcdplot(fibseq[i+2], fibseq[i-1]))
         #plt.scatter(x, y, color='k')
+        plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
+        # plt.legend(loc='upper right')
+        plt.title("Task 1 Graph: Fib -> GCD")
+        plt.show()
+
         plt.xlim(0, 60)
         plt.ylim(0, 60)
-        #plt.scatter(n, x, c='b', marker='x', label='Decrease by One')
-        #plt.scatter(n, w, c='r', marker='s', label='Decrease by Constant')
-        #plt.scatter(n, v, c='g', marker='o', label='Divide and Conquer')
-        #plt.scatter(n, f, c='c', marker='o', label='Divide and Conquer')
-        plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
+        plt.scatter(n, x, c='b', marker='x', label='Decrease by One')
+        plt.scatter(n, w, c='r', marker='s', label='Decrease by Constant')
+        plt.scatter(n, v, c='g', marker='o', label='Divide and Conquer')
+        # plt.scatter(n, f, c='c', marker='o', label='Divide and Conquer')
+        # plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
         plt.legend(loc='upper right')
         plt.title("Task 2 Graph: Worst Case Exponentiation")
         plt.show()
+
 
 
 
