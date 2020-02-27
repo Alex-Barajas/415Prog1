@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ab356a4-886b-4486-bf15-4fe5aac1520f" name="Default" comment="">
+    <list default="true" id="0ab356a4-886b-4486-bf15-4fe5aac1520f" name="Default" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj01.py" beforeDir="false" afterPath="$PROJECT_DIR$/proj01.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +72,16 @@
       <updated>1582316824388</updated>
       <workItem from="1582320820493" duration="112000" />
       <workItem from="1582321692360" duration="1935000" />
-      <workItem from="1582747466628" duration="8948000" />
+      <workItem from="1582747466628" duration="9174000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1582783780096</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1582783780096</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,6 +99,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="362" y="42" key="CommitChangelistDialog2" timestamp="1582783779897">
