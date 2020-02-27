@@ -27,7 +27,7 @@ def fib2(k):
 def gcd(m, n):
     if m == 0:
         return n
-    return gcd(n % m, m)
+    return gcd(n, m % n)
 
 
 def decreasebyconstant(a, n):
@@ -126,7 +126,7 @@ def main():
 
         print("_______________________________")
         print("\nTask 2:")
-        print("Enter integer value for a and n:  \n > ", end='')
+        print("Enter integer value for a and n ( same line ):  \n > ", end='')
         array = list(map(int, input().split()))
         if len(array) <= 1:
             exit()
