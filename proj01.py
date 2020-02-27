@@ -13,6 +13,13 @@ def fib(k):
         return k
     else:
         return fib(k - 1) + fib(k - 2)
+def fibplot(k):
+    fibseq = [0]
+    if k == 1:
+        fibseq.append(0)
+    for i range(k):
+        fibseq.append( () + ())
+    else:
 
 
 def fib2(k):
@@ -73,11 +80,10 @@ def divideandconquerplot(a, n):
     if n == 0:
         return 1
     if n % 2 == 0:
-        #return divideandconquerplot(a, n / 2) + divideandconquerplot(a, n / 2) + 1
         return 2 * (divideandconquerplot(a, n // 2)) + 1
     else:
         return 2 * (divideandconquerplot(a, n//2)) + 2
-    #return (divideandconquerplot(a, n // 2)) + divideandconquerplot(a, n) + 1
+
 
 def selectionsort(array):
     for i in range(len(array)):
@@ -88,6 +94,18 @@ def selectionsort(array):
         array[i], array[minidx] = array[minidx], array[i]
 
 
+def selectionsortplot(array):
+    count = 0
+    for i in range(len(array)):
+        minidx = i
+        for j in range(i+1, len(array)):
+            count += 1
+            if array[minidx] > array[j]:
+                minidx = j
+        array[i], array[minidx] = array[minidx], array[i]
+
+    return count
+
 def insertionsort(array):
     for i in range(1, len(array)):
         ind = array[i]
@@ -97,6 +115,17 @@ def insertionsort(array):
             j -= 1
         array[j + 1] = ind
 
+def insertionsortplot(array):
+    count = 0
+    for i in range(1, len(array)):
+        ind = array[i]
+        j = i - 1
+        while j >= 0 and ind < array[j]:
+            count += 1
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = ind
+    return count
 
 def main():
     print("_______________________________")
@@ -149,6 +178,9 @@ def main():
         print("Scatter plot mode selected")
         # for i in range(1, 5):
         #     print(gcd(fib(i + 1), fib(i)))
+        print("_______________________________")
+        print("\nTask 1:")
+
 
         print("_______________________________")
         print("\nTask 2:")
