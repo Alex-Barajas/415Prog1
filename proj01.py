@@ -15,20 +15,32 @@ def fib(k):
         return fib(k - 1) + fib(k - 2)
 
 
+def fibplot(n):
+    terms = [0, 1]
+    i = 2
+    while i <= n:
+        terms.append(terms[i-1]+terms[i-2])
+        i = i + 1
+    return terms
+
+
 def fib2(k):
     # calculate corresponding number of additions
     if (k == 0) or (k == 1):
-        f = 0
+        return 0
     else:
-        f = fib2(k - 1) + fib2(k - 2) + 1
-    return f
+        return fib2(k - 1) + fib2(k - 2) + 1
 
 
 def gcd(m, n):
-    if m == 0:
-        return n
+    if n == 0:
+        return m
     return gcd(n, m % n)
 
+def gcdplot(m, n):
+    if n == 0:
+        return 0
+    return gcdplot(n, m % n) + 1
 
 def decreasebyconstant(a, n):
     if n == 0:
@@ -73,11 +85,10 @@ def divideandconquerplot(a, n):
     if n == 0:
         return 1
     if n % 2 == 0:
-        #return divideandconquerplot(a, n / 2) + divideandconquerplot(a, n / 2) + 1
         return 2 * (divideandconquerplot(a, n // 2)) + 1
     else:
         return 2 * (divideandconquerplot(a, n//2)) + 2
-    #return (divideandconquerplot(a, n // 2)) + divideandconquerplot(a, n) + 1
+
 
 def selectionsort(array):
     for i in range(len(array)):
@@ -87,6 +98,18 @@ def selectionsort(array):
                 minidx = j
         array[i], array[minidx] = array[minidx], array[i]
 
+
+def selectionsortplot(array):
+    count = 0
+    for i in range(len(array)):
+        minidx = i
+        for j in range(i+1, len(array)):
+            count += 1
+            if array[minidx] > array[j]:
+                minidx = j
+        array[i], array[minidx] = array[minidx], array[i]
+
+    return count
 
 def insertionsort(array):
     for i in range(1, len(array)):
@@ -162,21 +185,37 @@ def main():
         print("Scatter plot mode selected")
         # for i in range(1, 5):
         #     print(gcd(fib(i + 1), fib(i)))
-
+        print("_______________________________")
+        print("\nTask 1:")
+        print("Fib Seq")
+        fibseq = fibplot(66)
+        # for i in range(45):
+        #     fibseq.append(fib(i))
+        for ele in fibseq:
+            print(ele)
         print("_______________________________")
         print("\nTask 2:")
-        x, n, w, v = [], [], [], []
-        for i in range(1, 100):
+        x, n, w, v, f, g = [], [], [], [], [], []
+        for i in range(1, 60):
             x.append(decreasebyoneplot(5, i))
             w.append(decreasebyconstantplot(5, i))
             v.append(divideandconquerplot(5, i))
+            #f.append(fib2(i))
             n.append(i)
+            g.append(gcdplot(fibseq[i+2], fibseq[i-1]))
         #plt.scatter(x, y, color='k')
-        plt.xlim(0, 45)
-        plt.ylim(0, 45)
+        plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
+        # plt.legend(loc='upper right')
+        plt.title("Task 1 Graph: Fib -> GCD")
+        plt.show()
+
+        plt.xlim(0, 60)
+        plt.ylim(0, 60)
         plt.scatter(n, x, c='b', marker='x', label='Decrease by One')
         plt.scatter(n, w, c='r', marker='s', label='Decrease by Constant')
         plt.scatter(n, v, c='g', marker='o', label='Divide and Conquer')
+        # plt.scatter(n, f, c='c', marker='o', label='Divide and Conquer')
+        # plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
         plt.legend(loc='upper right')
         plt.title("Task 2 Graph: Worst Case Exponentiation")
         plt.show()
@@ -204,6 +243,7 @@ def main():
         plt.legend(loc='upper right')
         plt.title("Task 3 Graph: Best Case")
         plt.show()
+
 
 
 
