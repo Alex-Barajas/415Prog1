@@ -137,23 +137,22 @@ def insertionsort(array):
             j -= 1
         array[j + 1] = ind
 
-def insertionsortplot(array):
-    count = 0
-    record = 0
-    for i in range(1, len(array)):
-        ind = array[i]
-        j = i - 1
-        while j >= 0 and ind < array[j]:
-            count += 1
-            array[j + 1] = array[j]
-            j -= 1
-        array[j + 1] = ind
-        record = (count*(ind**2))/2 - (count*ind)/2
-    return record
+# def insertionsortplot(array):
+#     global count
+#     for i in range(1, len(array)):
+#         ind = array[i]
+#         j = i - 1
+#         while j >= 0 and ind < array[j]:
+#             count += 1
+#             array[j + 1] = array[j]
+#             j -= 1
+#         array[j + 1] = ind
+#         #record = (count*(ind**2))/2 - (count*ind)/2
+#     return count
 
 
 def selectionsortplot(array):
-    count = 0
+    global count
     for i in range(len(array)):
         minidx = i
         for j in range(i+1, len(array)):
@@ -298,7 +297,7 @@ def main():
 
         for i in range(1, 45):
             x.append(insertionsortplot(randomarray))
-            #w.append(selectionsortplot(randomarray2))
+            w.append(selectionsortplot(randomarray2))
             n.append(i)
         #randomarray.insert(int(2))
 
