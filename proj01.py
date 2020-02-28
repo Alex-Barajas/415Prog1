@@ -10,7 +10,6 @@ count_global = 0
 
 def fib(k):
     global count_global
-    # compute the kth fibonacci number
     if k <= 1:
         return k
     else:
@@ -22,17 +21,9 @@ def fibplot(n):
     terms = [0, 1]
     i = 2
     while i <= n:
-        terms.append(terms[i-1]+terms[i-2])
+        terms.append(terms[i - 1] + terms[i - 2])
         i = i + 1
     return terms
-
-
-# def fib2(k):
-#     # calculate corresponding number of additions
-#     if (k == 0) or (k == 1):
-#         return 0
-#     else:
-#         return fib2(k - 1) + fib2(k - 2) + 1
 
 
 def gcd(m, n):
@@ -42,10 +33,6 @@ def gcd(m, n):
     count_global += 1
     return gcd(n, m % n)
 
-# def gcdplot(m, n):
-#     if n == 0:
-#         return 0
-#     return gcdplot(n, m % n) + 1
 
 def decreasebyconstant(a, n):
     global count_global
@@ -53,18 +40,10 @@ def decreasebyconstant(a, n):
         return 1
     if n % 2 == 0:
         count_global += 1
-        return (decreasebyconstant(a, n/2))**2
+        return (decreasebyconstant(a, n / 2)) ** 2
     else:
         count_global += 2
-        return (decreasebyconstant(a, (n//2)) ** 2) * a
-
-
-# def decreasebyconstantplot(a, n):
-#     if n == 0:
-#         return 0
-#     if n % 2 == 0:
-#         return decreasebyconstantplot(a, n/2) + 1
-#     return decreasebyconstantplot(a, (n // 2)) + 2
+        return (decreasebyconstant(a, (n // 2)) ** 2) * a
 
 
 def decreasebyone(a, n):
@@ -76,43 +55,27 @@ def decreasebyone(a, n):
         return a * (decreasebyone(a, n - 1))
 
 
-# def decreasebyoneplot(a, n):
-#     if n == 0:
-#         return 1
-#     return decreasebyoneplot(a, n - n) + n
-
-
 def divideandconquer(a, n):
     global count_global
     if n == 0:
         return 1
     if n % 2 == 0:
         count_global += 1
-        return divideandconquer(a, n/2) * divideandconquer(a, n/2)
+        return divideandconquer(a, n / 2) * divideandconquer(a, n / 2)
     else:
         count_global += 2
         return (divideandconquer(a, (n // 2)) * (divideandconquer(a, (n // 2)))) * a
-
-
-# def divideandconquerplot(a, n):
-#     if n == 0:
-#         return 1
-#     if n % 2 == 0:
-#         return 2 * (divideandconquerplot(a, n // 2)) + 1
-#     else:
-#         return 2 * (divideandconquerplot(a, n//2)) + 2
 
 
 def selectionsort(array):
     global count_global
     for i in range(len(array)):
         minidx = i
-        for j in range(i+1, len(array)):
+        for j in range(i + 1, len(array)):
             count_global += 1
             if array[minidx] > array[j]:
                 minidx = j
         array[i], array[minidx] = array[minidx], array[i]
-
 
 
 def insertionsort(array):
@@ -127,35 +90,8 @@ def insertionsort(array):
             j -= 1
         array[j + 1] = ind
 
-# def insertionsortplot(array):
-#     global count
-#     for i in range(1, len(array)):
-#         ind = array[i]
-#         j = i - 1
-#         while j >= 0 and ind < array[j]:
-#             count += 1
-#             array[j + 1] = array[j]
-#             j -= 1
-#         array[j + 1] = ind
-#         #record = (count*(ind**2))/2 - (count*ind)/2
-#     return count
-
-
-# def selectionsortplot(array):
-#     global count
-#     for i in range(len(array)):
-#         minidx = i
-#         for j in range(i+1, len(array)):
-#             if array[minidx] > array[j]:
-#                 count += 1
-#                 minidx = j
-#         array[i], array[minidx] = array[minidx], array[i]
-#
-#     return count
-
 
 def main():
-
     global count_global
     print("_______________________________")
     mode = int(input("Mode selection: \n \t Enter 0 for User Testing Mode --or--  1 Scatter Plot Mode: \n > "))
@@ -163,12 +99,11 @@ def main():
         print("_______________________________")
         print("User Testing Mode selected!")
         print("_______________________________")
-        #print("Enter integer value for K:  \n > ", end='')
-        #array = list(map(int, input().split()))
+
         print("\nTask 1:")
         k = int(input("\tEnter integer value for K:  \n > "))
         print("Fib: ", fib(k))
-        print("GCD: ", gcd(k+1, k))
+        print("GCD: ", gcd(k + 1, k))
 
         print("_______________________________")
         print("\nTask 2:")
@@ -184,8 +119,6 @@ def main():
         print("_______________________________")
         print("\nTask 3:")
         n = int(input("Enter a size of a list:  \n > "))
-        #print("Enter a list of integers to be sorted:  \n > ", end='')
-        #array = list(map(int, input().split()))
         sortarray = []
         print("Enter elements in list on its own line")
         for ele in range(n):
@@ -206,17 +139,24 @@ def main():
 
     elif mode == 1:
         print("Scatter plot mode selected")
-        # for i in range(1, 5):
-        #     print(gcd(fib(i + 1), fib(i)))
         print("_______________________________")
         print("\nTask 1:")
         print("Fib Seq")
         fibseq = fibplot(66)
-        for ele in fibseq:
-            print(ele)
+        # for ele in fibseq:
+        #     print(ele)
         print("_______________________________")
         print("\nTask 2:")
-        x, n, w, v, f, g = [], [], [], [], [], []
+        x, n, w, v, f, g, l= [], [], [], [], [], [], []
+
+        for i in range(5):
+            fib(i)
+            f.append(count_global)
+            count_global = 0
+            l.append(i)
+
+
+
         for i in range(1, 60):
             n.append(i)
 
@@ -232,37 +172,39 @@ def main():
             v.append(count_global)
             count_global = 0
 
-
-            gcd(fibseq[i+2], fibseq[i-1])
+            gcd(fibseq[i + 2], fibseq[i - 1])
             g.append(count_global)
             count_global = 0
 
-        #plt.scatter(x, y, color='k')
+        #Fib
+        plt.xlim(0, 50)
+        plt.ylim(0, 50)
+        plt.scatter(l, f, c='c', marker='o', label='fib')
+        plt.title("Task 1 Graph: Fib")
+        plt.show()
+
+        # GCD Graph
         plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
-        # plt.legend(loc='upper right')
         plt.title("Task 1 Graph: Fib -> GCD")
         plt.xlabel('N')
         plt.ylabel('D(n)')
         plt.show()
 
+        # Task 2 Grpah
         plt.xlim(0, 60)
         plt.ylim(0, 60)
-        plt.scatter(n, x, c='b', marker='x', label='Decrease by One')
+        plt.plot(n, x, c='b', marker='x', label='Decrease by One')
         plt.scatter(n, w, c='r', marker='s', label='Decrease by Constant')
         plt.scatter(n, v, c='g', marker='o', label='Divide and Conquer')
-        # plt.scatter(n, f, c='c', marker='o', label='Divide and Conquer')
-        # plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
         plt.legend(loc='upper right')
         plt.title("Task 2 Graph: Worst Case Exponentiation")
         plt.xlabel('N')
         plt.ylabel('M(n)')
         plt.show()
 
-
-
-
-        print ("\nTask 3:")
-        #Task 3: For different sizes of the list (n), generate test data that is sorted,
+        print("\nTask 3:")
+        print("See Graph")
+        # Task 3: For different sizes of the list (n), generate test data that is sorted,
         # random and reverse sorted. Use the same input data to
         # compute C(n) for each of the two sorting algorithms.
         # Produce three scatter plots that compare the complexity
@@ -270,39 +212,18 @@ def main():
         # i) Best-case, already in order and we insert just one value
         # ii) Average-case, and
         # iii) Worst-case,
+
         r, n, t, = [], [], []
-        #for i in range (1, 100):
-         #   x.append(insertionsortplot(5,))
-          #  n.append(i)
-
-        # randomarray = np.random.randint(1, 100, 50)
-        # randomarray.sort()
-        #np.insert(randomarray, 2, 45)
-
-        # insertionsort(randomarray)
-        # print("Insertion Sort", count_global)
-        # count_global = 0
-
-
-        # randomarray2 = np.random.randint(1, 100, 50)
-        # randomarray2.sort()
-
-        #print(selectionsortplot(randomarray2))
-        #print(insertionsortplot(randomarray))
-
-
         for i in range(1, 60):
             randomarray = np.random.randint(1, 100, i)
             randomarray.sort()
             insertionsort(randomarray)
             r.append(count_global)
             count_global = 0
-
             selectionsort(randomarray)
             t.append(count_global)
             count_global = 0
             n.append(i)
-
         plt.xlim(0, 45)
         plt.ylim(0, 45)
         plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
@@ -313,6 +234,7 @@ def main():
         plt.ylabel('C(n)')
         plt.show()
 
+        # Avg Case
         r, n, t, = [], [], []
         for i in range(1, 60):
             randomarray = np.random.randint(1, 100, i)
@@ -324,8 +246,6 @@ def main():
             t.append(count_global)
             count_global = 0
             n.append(i)
-
-        # Avg Case
         plt.xlim(0, 45)
         plt.ylim(0, 45)
         plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
@@ -336,6 +256,7 @@ def main():
         plt.ylabel('C(n)')
         plt.show()
 
+        # worst case
         r, n, t, = [], [], []
         for i in range(1, 60):
             randomarray = np.random.randint(1, 100, i)
@@ -349,8 +270,6 @@ def main():
             t.append(count_global)
             count_global = 0
             n.append(i)
-
-        # worst case
         plt.xlim(0, 45)
         plt.ylim(0, 45)
         plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
@@ -360,5 +279,6 @@ def main():
         plt.xlabel('N')
         plt.ylabel('C(n)')
         plt.show()
+
 
 main()
