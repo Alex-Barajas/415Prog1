@@ -8,10 +8,13 @@ import numpy as np
 
 count_global = 0
 
+
 def fib(k):
     global count_global
-    if k <= 1:
-        return k
+    if k == 0:
+        return 0
+    if k == 1:
+        return 1
     else:
         count_global += 1
         return fib(k - 1) + fib(k - 2)
@@ -27,11 +30,9 @@ def fibplot(n):
 
 
 def gcd(m, n):
-    global count_global
-    if n == 0:
-        return m
-    count_global += 1
-    return gcd(n, m % n)
+    if n == 0 or m == 0 or n == 1 or m == 1:
+        return 0
+    return gcd(n, m % n) + 1
 
 
 def decreasebyconstant(a, n):
@@ -147,15 +148,17 @@ def main():
         #     print(ele)
         print("_______________________________")
         print("\nTask 2:")
-        x, n, w, v, f, g, l= [], [], [], [], [], [], []
+        x, n, w, v, f, g, l = [], [], [], [], [], [], []
 
-        for i in range(5):
+        for i in range(30):
             fib(i)
             f.append(count_global)
             count_global = 0
             l.append(i)
 
-
+            g.append(gcd(fibseq[i + 1], fibseq[i]))
+            # g.append(count_global)
+            count_global = 0
 
         for i in range(1, 60):
             n.append(i)
@@ -172,19 +175,15 @@ def main():
             v.append(count_global)
             count_global = 0
 
-            gcd(fibseq[i + 2], fibseq[i - 1])
-            g.append(count_global)
-            count_global = 0
-
-        #Fib
-        plt.xlim(0, 50)
-        plt.ylim(0, 50)
-        plt.scatter(l, f, c='c', marker='o', label='fib')
+        # Fib
+        plt.xlim(0, 30)
+        plt.ylim(0, 80000)
+        plt.scatter(l, fibseq[:30], c='c', marker='o', label='fib')
         plt.title("Task 1 Graph: Fib")
         plt.show()
 
         # GCD Graph
-        plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
+        plt.scatter(f, g, c='c', marker='o', label='fib -> GCD')
         plt.title("Task 1 Graph: Fib -> GCD")
         plt.xlabel('N')
         plt.ylabel('D(n)')
