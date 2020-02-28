@@ -137,17 +137,33 @@ def insertionsort(array):
             j -= 1
         array[j + 1] = ind
 
-# def insertionsortplot(array):
-#     count = 0
-#     for i in range(1, len(array)):
-#         ind = array[i]
-#         j = i - 1
-#         while j >= 0 and ind < array[j]:
-#             count += 1
-#             array[j + 1] = array[j]
-#             j -= 1
-#         array[j + 1] = ind
-#     return count
+def insertionsortplot(array):
+    count = 0
+    record = 0
+    for i in range(1, len(array)):
+        ind = array[i]
+        j = i - 1
+        while j >= 0 and ind < array[j]:
+            count += 1
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = ind
+        record = (count*(ind**2))/2 - (count*ind)/2
+    return record
+
+
+def selectionsortplot(array):
+    count = 0
+    for i in range(len(array)):
+        minidx = i
+        for j in range(i+1, len(array)):
+            if array[minidx] > array[j]:
+                count += 1
+                minidx = j
+        array[i], array[minidx] = array[minidx], array[i]
+
+    return count
+
 
 def main():
 
@@ -251,30 +267,60 @@ def main():
 
 
 
+
         print ("\nTask 3:")
         #Task 3: For different sizes of the list (n), generate test data that is sorted,
         # random and reverse sorted. Use the same input data to
         # compute C(n) for each of the two sorting algorithms.
         # Produce three scatter plots that compare the complexity
         # of the two algorithms in
-        # i) Best-case,
+        # i) Best-case, already in order and we insert just one value
         # ii) Average-case, and
-        # iii) Worst-case.
-        x, n, w, v = [], [], [], []
+        # iii) Worst-case,
+        x, n, w = [], [], [],
         #for i in range (1, 100):
          #   x.append(insertionsortplot(5,))
           #  n.append(i)
 
-        randomarray = np.random.randint(1, 101, 60)
+        randomarray = np.random.randint(1, 100, 50)
         randomarray.sort()
-        print(insertionsort(randomarray))
+        #np.insert(randomarray, 2, 45)
+
+        print(insertionsortplot(randomarray))
+
+
+        randomarray2 = np.random.randint(1, 100, 50)
+        randomarray2.sort()
+
+        #print(selectionsortplot(randomarray2))
+        #print(insertionsortplot(randomarray))
+
+
+        for i in range(1, 45):
+            x.append(insertionsortplot(randomarray))
+            #w.append(selectionsortplot(randomarray2))
+            n.append(i)
+        #randomarray.insert(int(2))
+
+
 
         plt.xlim(0, 45)
         plt.ylim(0, 45)
         plt.scatter(n, x, c='b', marker='x', label='Insertion Sort')
-        plt.scatter(n, w, c='r', marker='s', label='Selection Sort ')
+        #plt.scatter(n, w, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
         plt.title("Task 3 Graph: Best Case")
         plt.show()
+
+        # Avg Case
+        plt.xlim(0, 45)
+        plt.ylim(0, 45)
+        plt.scatter(n, x, c='b', marker='x', label='Insertion Sort')
+        # plt.scatter(n, w, c='r', marker='s', label='Selection Sort ')
+        plt.legend(loc='upper right')
+        plt.title("Task 3 Graph: Average Casse")
+        plt.show()
+
+
 
 main()
