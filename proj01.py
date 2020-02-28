@@ -241,6 +241,8 @@ def main():
         plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
         # plt.legend(loc='upper right')
         plt.title("Task 1 Graph: Fib -> GCD")
+        plt.xlabel('N')
+        plt.ylabel('D(n)')
         plt.show()
 
         plt.xlim(0, 60)
@@ -252,6 +254,8 @@ def main():
         # plt.scatter(n, g, c='c', marker='o', label='fib -> GCD')
         plt.legend(loc='upper right')
         plt.title("Task 2 Graph: Worst Case Exponentiation")
+        plt.xlabel('N')
+        plt.ylabel('M(n)')
         plt.show()
 
 
@@ -302,9 +306,11 @@ def main():
         plt.xlim(0, 45)
         plt.ylim(0, 45)
         plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
-        plt.scatter(n, w, c='r', marker='s', label='Selection Sort ')
+        plt.scatter(n, t, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
         plt.title("Task 3 Graph: Best Case")
+        plt.xlabel('N')
+        plt.ylabel('C(n)')
         plt.show()
 
         r, n, t, = [], [], []
@@ -325,7 +331,9 @@ def main():
         plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
         plt.scatter(n, t, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
-        plt.title("Task 3 Graph: Average Casse")
+        plt.title("Task 3 Graph: Average Case")
+        plt.xlabel('N')
+        plt.ylabel('C(n)')
         plt.show()
 
         r, n, t, = [], [], []
@@ -348,7 +356,9 @@ def main():
         plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
         plt.scatter(n, t, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
-        plt.title("Task 3 Graph: worst")
+        plt.title("Task 3 Graph: Worst Case")
+        plt.xlabel('N')
+        plt.ylabel('C(n)')
         plt.show()
 
 main()
