@@ -175,15 +175,20 @@ def main():
             v.append(count_global)
             count_global = 0
 
-        # Fib
-        plt.xlim(0, 30)
-        plt.ylim(0, 80000)
-        plt.scatter(l, fibseq[:30], c='c', marker='o', label='fib')
+
+            gcd(fibseq[i + 2], fibseq[i - 1])
+            g.append(count_global)
+            count_global = 0
+
+        #Fib
+        plt.xlim(0, 50)
+        plt.ylim(0, 50)
+        plt.plot(l, f, c='c', marker='o', label='fib')
         plt.title("Task 1 Graph: Fib")
         plt.show()
 
         # GCD Graph
-        plt.scatter(f, g, c='c', marker='o', label='fib -> GCD')
+        plt.plot(n, g, c='c', marker='o', label='fib -> GCD')
         plt.title("Task 1 Graph: Fib -> GCD")
         plt.xlabel('N')
         plt.ylabel('D(n)')
@@ -193,8 +198,8 @@ def main():
         plt.xlim(0, 60)
         plt.ylim(0, 60)
         plt.plot(n, x, c='b', marker='x', label='Decrease by One')
-        plt.scatter(n, w, c='r', marker='s', label='Decrease by Constant')
-        plt.scatter(n, v, c='g', marker='o', label='Divide and Conquer')
+        plt.plot(n, w, c='r', marker='s', label='Decrease by Constant')
+        plt.plot(n, v, c='g', marker='o', label='Divide and Conquer')
         plt.legend(loc='upper right')
         plt.title("Task 2 Graph: Worst Case Exponentiation")
         plt.xlabel('N')
@@ -225,12 +230,13 @@ def main():
             n.append(i)
         plt.xlim(0, 45)
         plt.ylim(0, 45)
-        plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
-        plt.scatter(n, t, c='r', marker='s', label='Selection Sort ')
+        plt.plot(n, r, c='b', marker='x', label='Insertion Sort')
+        plt.plot(n, t, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
         plt.title("Task 3 Graph: Best Case")
         plt.xlabel('N')
         plt.ylabel('C(n)')
+        plt.savefig("task3best.png")
         plt.show()
 
         # Avg Case
@@ -247,12 +253,13 @@ def main():
             n.append(i)
         plt.xlim(0, 45)
         plt.ylim(0, 45)
-        plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
-        plt.scatter(n, t, c='r', marker='s', label='Selection Sort ')
+        plt.plot(n, r, c='b', marker='x', label='Insertion Sort')
+        plt.plot(n, t, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
         plt.title("Task 3 Graph: Average Case")
         plt.xlabel('N')
         plt.ylabel('C(n)')
+        plt.savefig("task3avg.png")
         plt.show()
 
         # worst case
@@ -271,13 +278,15 @@ def main():
             n.append(i)
         plt.xlim(0, 45)
         plt.ylim(0, 45)
-        plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
-        plt.scatter(n, t, c='r', marker='s', label='Selection Sort ')
+        plt.plot(n, r, c='b', marker='x', label='Insertion Sort')
+        plt.plot(n, t, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
         plt.title("Task 3 Graph: Worst Case")
         plt.xlabel('N')
         plt.ylabel('C(n)')
+        plt.savefig("task3.png")
         plt.show()
+
 
 
 main()
