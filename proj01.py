@@ -148,6 +148,7 @@ def main():
         #     print(ele)
         print("_______________________________")
         print("\nTask 2:")
+
         x, n, w, v, f, g, l = [], [], [], [], [], [], []
 
         for i in range(30):
@@ -157,7 +158,6 @@ def main():
             l.append(i)
 
             g.append(gcd(fibseq[i + 1], fibseq[i]))
-            # g.append(count_global)
             count_global = 0
 
         for i in range(1, 60):
@@ -176,22 +176,25 @@ def main():
             count_global = 0
 
 
-            gcd(fibseq[i + 2], fibseq[i - 1])
-            g.append(count_global)
-            count_global = 0
+            # gcd(fibseq[i + 2], fibseq[i - 1])
+            # g.append(count_global)
+            # count_global = 0
 
         #Fib
-        plt.xlim(0, 50)
-        plt.ylim(0, 50)
-        plt.plot(l, f, c='c', marker='o', label='fib')
+        plt.xlim(0, 30)
+        plt.ylim(0, 80000)
+        plt.plot(l, fibseq[:30], c='c', marker='o', label='fib')
+
         plt.title("Task 1 Graph: Fib")
+        plt.savefig("task1fib.png")
         plt.show()
 
         # GCD Graph
-        plt.plot(n, g, c='c', marker='o', label='fib -> GCD')
+        plt.plot(f, g, c='c', marker='o', label='fib -> GCD')
         plt.title("Task 1 Graph: Fib -> GCD")
         plt.xlabel('N')
         plt.ylabel('D(n)')
+        plt.savefig("task1fgcd.png")
         plt.show()
 
         # Task 2 Grpah
@@ -204,6 +207,7 @@ def main():
         plt.title("Task 2 Graph: Worst Case Exponentiation")
         plt.xlabel('N')
         plt.ylabel('M(n)')
+        plt.savefig("task2.png")
         plt.show()
 
         print("\nTask 3:")
