@@ -114,23 +114,13 @@ def selectionsort(array):
         array[i], array[minidx] = array[minidx], array[i]
 
 
-# def selectionsortplot(array):
-#     count = 0
-#     for i in range(len(array)):
-#         minidx = i
-#         for j in range(i+1, len(array)):
-#             count += 1
-#             if array[minidx] > array[j]:
-#                 minidx = j
-#         array[i], array[minidx] = array[minidx], array[i]
-#
-#     return count
 
 def insertionsort(array):
     global count_global
     for i in range(1, len(array)):
         ind = array[i]
         j = i - 1
+        count_global += 1
         while j >= 0 and ind < array[j]:
             count_global += 1
             array[j + 1] = array[j]
@@ -151,17 +141,17 @@ def insertionsort(array):
 #     return count
 
 
-def selectionsortplot(array):
-    global count
-    for i in range(len(array)):
-        minidx = i
-        for j in range(i+1, len(array)):
-            if array[minidx] > array[j]:
-                count += 1
-                minidx = j
-        array[i], array[minidx] = array[minidx], array[i]
-
-    return count
+# def selectionsortplot(array):
+#     global count
+#     for i in range(len(array)):
+#         minidx = i
+#         for j in range(i+1, len(array)):
+#             if array[minidx] > array[j]:
+#                 count += 1
+#                 minidx = j
+#         array[i], array[minidx] = array[minidx], array[i]
+#
+#     return count
 
 
 def main():
@@ -214,7 +204,7 @@ def main():
         for ele in insertionarray:
             print(ele, end=' ')
 
-    if mode == 1:
+    elif mode == 1:
         print("Scatter plot mode selected")
         # for i in range(1, 5):
         #     print(gcd(fib(i + 1), fib(i)))
@@ -276,51 +266,89 @@ def main():
         # i) Best-case, already in order and we insert just one value
         # ii) Average-case, and
         # iii) Worst-case,
-        x, n, w = [], [], [],
+        r, n, t, = [], [], []
         #for i in range (1, 100):
          #   x.append(insertionsortplot(5,))
           #  n.append(i)
 
-        randomarray = np.random.randint(1, 100, 50)
-        randomarray.sort()
+        # randomarray = np.random.randint(1, 100, 50)
+        # randomarray.sort()
         #np.insert(randomarray, 2, 45)
 
-        print(insertionsortplot(randomarray))
+        # insertionsort(randomarray)
+        # print("Insertion Sort", count_global)
+        # count_global = 0
 
 
-        randomarray2 = np.random.randint(1, 100, 50)
-        randomarray2.sort()
+        # randomarray2 = np.random.randint(1, 100, 50)
+        # randomarray2.sort()
 
         #print(selectionsortplot(randomarray2))
         #print(insertionsortplot(randomarray))
 
 
-        for i in range(1, 45):
-            x.append(insertionsortplot(randomarray))
-            w.append(selectionsortplot(randomarray2))
-            n.append(i)
-        #randomarray.insert(int(2))
+        for i in range(1, 60):
+            randomarray = np.random.randint(1, 100, i)
+            randomarray.sort()
+            insertionsort(randomarray)
+            r.append(count_global)
+            count_global = 0
 
-#commit hello
-        
+            selectionsort(randomarray)
+            t.append(count_global)
+            count_global = 0
+            n.append(i)
 
         plt.xlim(0, 45)
         plt.ylim(0, 45)
-        plt.scatter(n, x, c='b', marker='x', label='Insertion Sort')
-        #plt.scatter(n, w, c='r', marker='s', label='Selection Sort ')
+        plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
+        plt.scatter(n, w, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
         plt.title("Task 3 Graph: Best Case")
         plt.show()
 
+        r, n, t, = [], [], []
+        for i in range(1, 60):
+            randomarray = np.random.randint(1, 100, i)
+            insertionsort(randomarray)
+            r.append(count_global)
+            count_global = 0
+
+            selectionsort(randomarray)
+            t.append(count_global)
+            count_global = 0
+            n.append(i)
+
         # Avg Case
         plt.xlim(0, 45)
         plt.ylim(0, 45)
-        plt.scatter(n, x, c='b', marker='x', label='Insertion Sort')
-        # plt.scatter(n, w, c='r', marker='s', label='Selection Sort ')
+        plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
+        plt.scatter(n, t, c='r', marker='s', label='Selection Sort ')
         plt.legend(loc='upper right')
         plt.title("Task 3 Graph: Average Casse")
         plt.show()
 
+        r, n, t, = [], [], []
+        for i in range(1, 60):
+            randomarray = np.random.randint(1, 100, i)
+            randomarray.sort(0)
+            reversearray = randomarray[::-1]
+            insertionsort(reversearray)
+            r.append(count_global)
+            count_global = 0
 
+            selectionsort(reversearray)
+            t.append(count_global)
+            count_global = 0
+            n.append(i)
+
+        # worst case
+        plt.xlim(0, 45)
+        plt.ylim(0, 45)
+        plt.scatter(n, r, c='b', marker='x', label='Insertion Sort')
+        plt.scatter(n, t, c='r', marker='s', label='Selection Sort ')
+        plt.legend(loc='upper right')
+        plt.title("Task 3 Graph: worst")
+        plt.show()
 
 main()
