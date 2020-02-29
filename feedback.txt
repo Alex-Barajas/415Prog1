@@ -1,0 +1,6 @@
+Feedback:
+Collin Sperry and Welinton De Leon
+Amazing graphs, looks great!
+Possibly explain what the lists that you feed to insertion sort and comparison sort looked like to get your data for best, worst and average case.
+Looks clean
+
