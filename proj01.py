@@ -186,7 +186,9 @@ def main():
         plt.plot(l, fibseq[:30], c='c', marker='o', label='fib')
 
         plt.title("Task 1 Graph: Fib")
-        plt.savefig("task1fib.png")
+        plt.savefig("task111fib.png")
+        plt.xlabel('N')
+        plt.ylabel('A(n)')
         plt.show()
 
         # GCD Graph
